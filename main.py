@@ -13,13 +13,14 @@ class Matrix:
         canvas = self.matrix.CreateFrameCanvas()
         font = graphics.Font()
         font.LoadFont("./fonts/9x18.bdf")
-        text_color = graphics.Color(200, 255, 255)
+        text_color = graphics.Color(0, 0, 255)
         
         while(True):
             canvas.Clear()
-            graphics.DrawText(canvas, font, 0, 10, text_color, datetime.now().strftime("%Y"))
+            graphics.DrawText(canvas, font, 0, 10, text_color, datetime.now().strftime("%Y toire now"))
             graphics.DrawText(canvas, font, 0, 21, text_color, datetime.now().strftime("%m/%d"))
             graphics.DrawText(canvas, font, 0, 32, text_color, datetime.now().strftime("%H:%M:%S"))
+            graphics.DrawText(canvas, font, 0,43, text_color, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
             time.sleep(0.05)
             canvas = self.matrix.SwapOnVSync(canvas)
 
@@ -30,9 +31,8 @@ if __name__ == "__main__":
     options.cols = 80
     options.disable_hardware_pulsing = True
     options.pwm_lsb_nanoseconds = 80
-    # options.chain_length = 1
-    # options.parallel = 1
-    # options.hardware_mapping = 'regular'
+    options.chain_length = 2
+    options.pixel_mapper_config = "V-mapper"
 
     matrix = Matrix(options)
     # matrix.Fill()
