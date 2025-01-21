@@ -1,7 +1,7 @@
-import os
+# import os
 from datetime import datetime
 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics
 
 from utils.crypto import Crypto
@@ -50,7 +50,7 @@ class Matrix:
 
 
 if __name__ == "__main__":
-    load_dotenv()
+    # load_dotenv()
 
     options = RGBMatrixOptions()
     options.rows = 40
@@ -60,5 +60,5 @@ if __name__ == "__main__":
     options.chain_length = 2
     options.pixel_mapper_config = "V-mapper"
 
-    matrix = Matrix(options, os.getenv("OPEN_WEATHER_API_KEY"), os.getenv("NEWS_API_KEY"))
+    matrix = Matrix(options, "REMOVED", "REMOVED")
     matrix.run()
