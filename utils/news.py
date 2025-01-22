@@ -14,7 +14,7 @@ class News:
         if self.__cache is not None and (datetime.now().timestamp() - self.__cache_time) <= 90.0:
             return self.__cache
 
-        url = f"{self.__endpoint}/top-headlines?country=jp&pageSize=1&apiKey={self.__key}"
+        url = f"{self.__endpoint}/top-headlines?country=us&pageSize=1&apiKey={self.__key}"
         data = NewsData(requests.get(url).json())
         self.__cache = data
         self.__cache_time = datetime.now().timestamp()
@@ -32,7 +32,10 @@ class NewsData:
         return self.__data["articles"][0]["source"]["name"]
 
     def get_title(self):
-        return self.__data["articles"][0]["title"]
+        if len(self.__data["articles"]) != 0:
+            return self.__data["articles"][0]["title"]
+        else:
+            return "None"
 
     def get_description(self):
         return self.__data["articles"][0]["description"]
